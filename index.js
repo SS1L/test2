@@ -34,9 +34,9 @@ function findWay(position, end) {
     const path = arr.shift();
     const pos = path[path.length - 1];
     const direction = [
-      [pos[0] - 1, pos[1], { answer: 'up' }],
+      [pos[0] - 1, pos[1], { answer: 'top' }],
       [pos[0], pos[1] + 1, { answer: 'right' }],
-      [pos[0] + 1, pos[1], { answer: 'down' }],
+      [pos[0] + 1, pos[1], { answer: 'bottom' }],
       [pos[0], pos[1] - 1, { answer: 'left' }],
     ];
 
