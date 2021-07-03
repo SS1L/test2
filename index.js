@@ -4,32 +4,34 @@ const matrix = [
     ['#', '+', '#', '+', '+', '+', '#', '#', '#'],
     ['+', '+', '#', '#', '0', '+', '#', '+', '#'],
     ['#', '#', '#', '+', '+', '#', '#', '#', '#'],
-    ['#', '#', '+', '+', '#', '#', '#', '#', '#'],
-    ['#', '#', '+', '#', '#', '#', '#', '#', '#'],
-    ['#', '#', '#', '#', '#', '#', '#', '#', '#'],
+    ['#', '#', '+', '+', '+', '#', '#', '#', '#'],
+    ['#', '#', '+', '#', '+', '#', '#', '#', '#'],
+    ['#', '#', '#', '#', '+', '#', '#', '#', '#'],
 ];
 console.log(matrix[0][0]);
 const row = matrix.findIndex((row) => row.includes('0'));
 const column = matrix[row].indexOf('0');
 const start = [row, column];
-const end = [1, 8];
-
+const end = [7, 4];
+console.log(matrix.length)
 if (end[1] === 0) {
     end[1] -= 1;
 } else if (end[1] === matrix.length) {
     end[1] += 1;
+} else if (end[0] === 0) {
+    end[0] -= 1;
+} else if (end[0] === matrix.length - 1) {
+    end[0] += 1;
 }
-console.log(end)
-
 function findWay(position, end) {
     let arr = [];
     matrix[position[0]][position[1]] = '-';
 
-    arr.push([position]); 
+    arr.push([position]);
 
     while (arr.length > 0) {
         let path = arr.shift();
-        let pos = path[path.length - 1]; 
+        let pos = path[path.length - 1];
         let direction = [
             [pos[0] - 1, pos[1], { answer: 'up' }],
             [pos[0], pos[1] + 1, { answer: 'right' }],
@@ -61,7 +63,7 @@ if (!path) {
 } else {
     let answer = [];
     path.forEach((index) => {
-        if (index[2] !== undefined){
+        if (index[2] !== undefined) {
             answer.push(index[2].answer)
         }
     })
